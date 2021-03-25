@@ -1,30 +1,68 @@
+
 'use strict';
-const {
-    Model
-} = require('sequelize');
+const {Model} = require('sequelize');
+const bcrypt = require('bcrypt')
+
 module.exports = (sequelize, DataTypes) => {
-    class User extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
-        static associate(models) {
-            // define association here
-            User.belongsToMany(models.Hotel, {
-                through: 'OrderTransaction',
-                foreignKey: 'UserId'
-            })
+  class User extends Model {
+   
+    static associate(models) {
+      User.belongsToMany(models.Hotel, {through: models.OrderTransaction})
+    }
+  };
+  User.init({
+    username: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: `username can't be empty`
         }
-    };
-    User.init({
-        username: DataTypes.STRING,
-        password: DataTypes.STRING,
-        email: DataTypes.STRING,
-        phone_number: DataTypes.STRING
-    }, {
-        sequelize,
-        modelName: 'User',
-    });
-    return User;
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: `password can't be empty`
+        },
+        isAlphanumeric: {
+          args: true,
+          msg: 'password must be alphanumeric'
+        },
+        len: {
+          args: [5,20],
+          msg: 'password must have a minimal of 5 character and a max of 20'
+        }
+      },
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: `email address should be a valid one`
+        }
+      }
+    },
+    phone_number: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: `you must have a phone`
+        }
+      }
+    }
+  }, {
+    sequelize,
+    modelName: 'User',
+  });
+
+  User.addHook('beforeCreate', ((instance, options) => {
+    instance.password = bcrypt.hashSync(instance.password, 10)
+  }))
+
+  return User;
 };
