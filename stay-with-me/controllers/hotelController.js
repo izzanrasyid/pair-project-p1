@@ -1,19 +1,20 @@
 const { Admin, Hotel, User } = require('../models')
 const transporter = require('../helper/nodemailer')
+const convertPrice = require('../helper/convertPrice');
 
 class HotelController {
     static listHotels(req, res) {
         Hotel.findAll({
                 include: Admin,
                 order: [
-                    ['id', 'asc']
+                    ['id', 'desc']
                 ]
             })
             .then(data => {
                 const username = req.session.username
 
                 const admin = req.session.admin
-                res.render('./hotels/list', { data, username, admin })
+                res.render('./hotels/list', { data, username, admin, convertPrice })
             })
             .catch(err => {
                 res.send(err)
@@ -50,11 +51,11 @@ class HotelController {
             })
             .then(data => {
                 let mailOptions = {
-                    from: '"Jobs.io <confirmation@jobsio.com>', 
-                    to: "fauzan@mail.com, riod@gmail.com", 
-                    subject: "new hotel Confirmation", 
-                    text: "Your Booking hahajaj!", 
-                    html: "<b>Congratulations on sending in your job application!</b>", 
+                    from: '"Stay With Me <info@staywithme.com>',
+                    to: "fauzan@mail.com, riod@gmail.com",
+                    subject: "New Hotel Just Coming",
+                    text: "For your information!",
+                    html: "<b>Hello, there's a new hotels in our list, come be the first to feel it!</b>",
                 };
 
 

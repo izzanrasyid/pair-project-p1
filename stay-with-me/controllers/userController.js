@@ -126,7 +126,10 @@ class UserController {
                         UserId: data.id
                     },
                     include: Hotel,
-                    attributes: ['id', 'UserId', 'HotelId', 'checkInDate', 'checkOutDate', 'status' ]
+                    attributes: ['id', 'UserId', 'HotelId', 'checkInDate', 'checkOutDate', 'status'],
+                    order: [
+                        ['id', 'DESC']
+                    ]
                 })
             })
             .then(result => {
@@ -169,14 +172,13 @@ class UserController {
                 })
             })
             .then(result => {
-                const email = user.email
 
                 let mailOptions = {
-                    from: '"Jobs.io <confirmation@jobsio.com>', 
-                    to: "fauzan@mail.com, riod@gmail.com", 
-                    subject: "Hotel Booking Confirmation", 
-                    text: "Your Booking hahajaj!", 
-                    html: "<b>Congratulations on sending in your job application!</b>", 
+                    from: '"Stay With Me <booking@staywithme.com>',
+                    to: "fauzan@mail.com, riod@gmail.com",
+                    subject: "Hotel Booking Confirmation",
+                    text: "Your Booking!",
+                    html: "<b>Your hotel reservation has been successfully confirmed!</b>",
                 };
 
                 transporter.sendMail(mailOptions, function(error, info) {
@@ -198,27 +200,27 @@ class UserController {
         const id = +req.params.id
         let user;
 
-        OrderTransaction.update({checkOutDate: new Date()}, {
-            where: {
-                id: id
-            },
-            returning: true
-        })
-        .then(result => {
-            return Hotel.update({status: 'available'}, {
+        OrderTransaction.update({ checkOutDate: new Date() }, {
                 where: {
-                    id: result[1][0].HotelId
+                    id: id
                 },
                 returning: true
             })
-        })
-        .then(data => {
+            .then(result => {
+                return Hotel.update({ status: 'available' }, {
+                    where: {
+                        id: result[1][0].HotelId
+                    },
+                    returning: true
+                })
+            })
+            .then(data => {
                 let mailOptions = {
-                    from: '"Jobs.io <confirmation@jobsio.com>', 
-                    to: "fauzan@mail.com, riod@gmail.com", 
-                    subject: "Hotel paid Confirmation", 
-                    text: "Your Booking hahajaj!", 
-                    html: "<b>Congratulations on sending in your job application!</b>", 
+                    from: '"Stay With Me <confirmation@staywithme.com>',
+                    to: "fauzan@mail.com, riod@gmail.com",
+                    subject: "Hotel Paid Confirmation",
+                    text: "Your Paid!",
+                    html: "<b>Your hotel payment has been successfully confirmed, enjoy sleeping!</b>",
                 };
 
 
@@ -229,12 +231,12 @@ class UserController {
                         console.log('Email sent: ' + info.response);
                     }
                 });
-            res.redirect(`/users/${username}`)
-        })
-        .catch(err => {
-            console.log(err)
-            res.send(err)
-        })
+                res.redirect(`/users/${username}`)
+            })
+            .catch(err => {
+                console.log(err)
+                res.send(err)
+            })
     }
 }
 
