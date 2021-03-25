@@ -1,6 +1,6 @@
-<%- include('../partials/header.ejs', {title: 'Add A Book'}) %>
+<%- include('../partials/header.ejs', {name: 'Add A Hotel'}) %>
     <br>
-    <a href="/books" class="btn btn-primary">Back to List</a>
+    <a href="/hotels" class="btn btn-primary">Back to List</a>
     <br>
     <% if (alert) { %>
         <% alert.split(',').forEach(el => { %>
@@ -9,33 +9,37 @@
             </div>
             <% }) %>
                 <%  } %>
-                    <form action="/books/add" method="POST">
+                    <form action="/hotels/add" method="POST">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" id="title" class="form-control" placeholder="Now You See Me">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Hotel Merah Jambu">
                         </div>
                         <div class="form-group">
-                            <label for="genre">Genre</label>
-                            <input type="text" name="genre" id="genre" class="form-control" placeholder="Drama, Comedy, Horror">
+                            <label for="facility">Facility</label>
+                            <input type="text" name="facility" id="facility" class="form-control" placeholder="Swimming Pool, Free Parking, Free Wifi">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" class="form-control" placeholder="Jakarta, Bandung, Yogyakarta">
                         </div>
                         <div class="form-group">
                             <label for="url">Image URL</label>
-                            <input type="text" name="url" id="url" class="form-control" placeholder="http://arah.in/pj-2">
+                            <input type="text" name="url" id="url" class="form-control" placeholder="https://unsplash.com/photos/u-wBgxWhd6w">
                         </div>
                         <div class="form-group">
-                            <label for="released_year">Released Year</label>
-                            <input type="text" name="released_year" id="released_year" class="form-control" placeholder="2020">
+                            <label for="price">Price</label>
+                            <input type="text" name="price" id="price" class="form-control" placeholder="1000000">
                         </div>
                         <div class="form-group">
-                            <label for="AuthorId">Author</label>
-                            <select name="AuthorId" id="AuthorId" class="form-control"> 
+                            <label for="AdminId">Admin</label>
+                            <select name="AdminId" id="AdminId" class="form-control"> 
             <option value="" selected>Select Here</option>
             <%data.forEach(element=>{%>
                 <option value="<%=element.id%>"><%=element.fullName()%></option>
             <%})%>
         </select>
                         </div>
-                        <button class="btn btn-success" type="submit">Add Book</button>
+                        <button class="btn btn-success" type="submit">Add Hotel</button>
                         <button class="btn btn-danger" type="reset">Reset</button>
                     </form>
 

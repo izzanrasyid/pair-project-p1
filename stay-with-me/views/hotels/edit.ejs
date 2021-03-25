@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs', {title: 'Edit A Book'}) %>
     <br>
-    <a href="/books" class="btn btn-primary">Back to List</a>
+    <a href="/hotels" class="btn btn-primary">Back to List</a>
     <br> <br>
     <% if (alert) { %>
         <% alert.split(',').forEach(el => { %>
@@ -9,33 +9,37 @@
             </div>
             <% }) %>
                 <%  } %>
-                    <form action="/books/<%= book.id %>/edit" method="POST">
+                    <form action="/hotels/<%= hotel.id %>/edit" method="POST">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" id="title" class="form-control" value="<%=book.title%>">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" value="<%=hotel.name%>">
                         </div>
                         <div class="form-group">
-                            <label for="genre">Genre</label>
-                            <input type="text" name="genre" id="genre" class="form-control" value="<%=book.genre.substring(1, book.genre.length-1)%>">
+                            <label for="facility">Facility</label>
+                            <input type="text" name="facility" id="facility" class="form-control" value="<%=hotel.facility.substring(1, hotel.facility.length-1)%>">
                         </div>
                         <div class="form-group">
-                            <label for="released_year">Released Year</label>
-                            <input type="text" name="released_year" id="released_year" class="form-control" value="<%=book.released_year%>">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" class="form-control" value="<%=hotel.location%>">
                         </div>
                         <div class="form-group">
                             <label for="url">Image URL</label>
-                            <input type="text" name="url" id="url" class="form-control" value="<%=book.url%>">
+                            <input type="text" name="url" id="url" class="form-control" value="<%=hotel.url%>">
                         </div>
                         <div class="form-group">
-                            <label for="AuthorId">Author</label>
-                            <select name="AuthorId" id="AuthorId" class="form-control"> 
+                            <label for="price">Price</label>
+                            <input type="text" name="price" id="price" class="form-control" value="<%=hotel.price%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="AdminId">Admin</label>
+                            <select name="AdminId" id="AdminId" class="form-control"> 
             <option value="">Select Here</option>
             <%data.forEach(element=>{%>
-                <option value="<%=element.id%>" <%=element.id === book.AuthorId ? "selected" : " " %>><%=element.fullName()%></option>
+                <option value="<%=element.id%>" <%=element.id === hotel.AdminId ? "selected" : " " %>><%=element.fullName()%></option>
             <%})%> 
         </select>
                         </div>
-                        <button class="btn btn-success" type="submit">Edit Book</button>
+                        <button class="btn btn-success" type="submit">Edit Hotel</button>
                         <button class="btn btn-danger" type="reset">Reset</button>
                     </form>
                     </div>
