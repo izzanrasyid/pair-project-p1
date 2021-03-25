@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const { Admin, Hotel, User, OrderTransaction } = require('../models')
-// const transporter = require('../helpers/nodemailer')
+const transporter = require('../helper/nodemailer')
 
 class UserController {
     static formRegister(req, res) {
@@ -121,7 +121,7 @@ class UserController {
             })
             .then(data => {
                 user = data
-                return UserHotel.findAll({
+                return OrderTransaction.findAll({
                     where: {
                         UserId: data.id
                     },
@@ -141,7 +141,7 @@ class UserController {
         const username = req.params.username
         const HotelId = req.params.HotelId
         let user;
-        let userHotel
+        let orderBooking
 
         User.findOne({
                 where: {
@@ -151,16 +151,15 @@ class UserController {
             .then(data => {
                 user = data
 
-                return UserHotel.create({
+                return OrderTransaction.create({
                     UserId: data.id,
                     HotelId: HotelId,
-                    checkInDate: data.checkInDate,
-                    checkOutDate: data.checkOutDate,
+                    checkInDate: new Date(),
                     status: 'booked'
                 })
             })
             .then(data2 => {
-                userHotel = data2
+                orderBooking = data2
 
                 return Hotel.update({ status: 'booked' }, {
                     where: {
@@ -172,12 +171,20 @@ class UserController {
             .then(result => {
                 const email = user.email
 
-                var mailOptions = {
-                    from: 'izzanrasyid9@gmail.com',
-                    to: email,
-                    subject: 'You just borrowed a Hotel',
-                    text: `Hi ${email}, you just booking ${result[1][0].title} from our website on ${userHotel.borrow_date} please enjoy your day, happy sleeping!`
+                let mailOptions = {
+                    from: '"Jobs.io <confirmation@jobsio.com>', 
+                    to: "fauzan@mail.com, riod@gmail.com", 
+                    subject: "Hotel Booking Confirmation", 
+                    text: "Your Booking hahajaj!", 
+                    html: "<b>Congratulations on sending in your job application!</b>", 
                 };
+                // return transporter.sendMail({
+                //     from: '"Jobs.io <confirmation@jobsio.com>', 
+                //     to: "fauzan@mail.com, riod@gmail.com", 
+                //     subject: "Confirmation of Job Application ✔", 
+                //     text: "Congratulations on sending in your job application!", 
+                //     html: "<b>Congratulations on sending in your job application!</b>", 
+                // });
 
                 transporter.sendMail(mailOptions, function(error, info) {
                     if (error) {
@@ -193,18 +200,18 @@ class UserController {
             })
     }
 
-    static return(req, res) {
+    static paid(req, res) {
         const username = req.params.username
         const id = +req.params.id
 
-        UserBook.update({status: 'paid'}, {
+        OrderTransaction.update({checkOutDate: new Date()}, {
             where: {
                 id: id
             },
             returning: true
         })
         .then(result => {
-            return Hotel.update({status: null}, {
+            return Hotel.update({status: 'available'}, {
                 where: {
                     id: result[1][0].HotelId
                 },
