@@ -1,0 +1,305 @@
+[{
+        "name": "Merlynn Park Hotel",
+        "facility": [
+            "5 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Jakarta",
+        "url": "https://unsplash.com/photos/M7GddPqJowg",
+        "price": 789000,
+        "AdminId": 1
+    },
+    {
+        "name": "Best Western Premier The Hive",
+        "facility": [
+            "5 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Jakarta",
+        "url": "https://unsplash.com/photos/_dS27XGgRyQ",
+        "price": 1080000,
+        "AdminId": 1
+    },
+    {
+        "name": "Mercure Jakarta Sabang",
+        "facility": [
+            "4 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Jakarta",
+        "url": "https://unsplash.com/photos/CepDpEiALqM",
+        "price": 500898,
+        "AdminId": 1
+    },
+    {
+        "name": "Ashley Wahid Hasyim Jakarta",
+        "facility": [
+            "4 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Jakarta",
+        "url": "https://unsplash.com/photos/giL2fHNr3Lc",
+        "price": 620000,
+        "AdminId": 1
+    },
+    {
+        "name": "The BnB Hotel Kelapa Gading",
+        "facility": [
+            "3 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Jakarta",
+        "url": "https://unsplash.com/photos/2wQY-DJhplM",
+        "price": 274000,
+        "AdminId": 1
+    },
+    {
+        "name": "The Papandayan",
+        "facility": [
+            "4 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bandung",
+        "url": "https://unsplash.com/photos/ORS4Y-et7xg",
+        "price": 977000,
+        "AdminId": 1
+    },
+    {
+        "name": "The Trans Luxury",
+        "facility": [
+            "5 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bandung",
+        "url": "https://unsplash.com/photos/IdpYE0Qt8Hw",
+        "price": 334261,
+        "AdminId": 1
+    },
+    {
+        "name": "POP! Hotel Festival Citylink",
+        "facility": [
+            "2 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bandung",
+        "url": "https://unsplash.com/photos/X13hkujF2EY",
+        "price": 247500,
+        "AdminId": 1
+    },
+    {
+        "name": "Vio Cihampelas",
+        "facility": [
+            "2 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bandung",
+        "url": "https://unsplash.com/photos/H7TGM7Sx0o4",
+        "price": 206000,
+        "AdminId": 1
+    },
+    {
+        "name": "Vio Cihampelas",
+        "facility": [
+            "2 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Swimming Pool",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bandung",
+        "url": "https://unsplash.com/photos/H7TGM7Sx0o4",
+        "price": 206000,
+        "AdminId": 1
+    },
+    {
+        "name": "Beehive Boutique Hotel",
+        "facility": [
+            "2 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bandung",
+        "url": "https://unsplash.com/photos/HtXK-ykvuxc",
+        "price": 690000,
+        "AdminId": 1
+    },
+    {
+        "name": "Hotel Tentrem Yogyakarta",
+        "facility": [
+            "5 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Yogyakarta",
+        "url": "https://unsplash.com/photos/RxEDblujcs0",
+        "price": 1573000,
+        "AdminId": 1
+    },
+    {
+        "name": "THE 1O1 Yogyakarta Tugu Hotel",
+        "facility": [
+            "4 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Yogyakarta",
+        "url": "https://unsplash.com/photos/SIg-ZsJPf5Q",
+        "price": 484290,
+        "AdminId": 1
+    },
+    {
+        "name": "Hotel Neo Malioboro By ASTON",
+        "facility": [
+            "3 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Yogyakarta",
+        "url": "https://unsplash.com/photos/o1lALNEP2BQ",
+        "price": 562500,
+        "AdminId": 1
+    },
+    {
+        "name": "PORTA by The Ambarrukmo",
+        "facility": [
+            "3 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Yogyakarta",
+        "url": "https://unsplash.com/photos/0rVjtzABZZU",
+        "price": 552898,
+        "AdminId": 1
+    },
+    {
+        "name": "Greenhost Boutique Hotel",
+        "facility": [
+            "3 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Yogyakarta",
+        "url": "https://unsplash.com/photos/zFukeBF6EWU",
+        "price": 505200,
+        "AdminId": 1
+    },
+    {
+        "name": "The Apurva Kempinski Bali",
+        "facility": [
+            "5 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bali",
+        "url": "https://unsplash.com/photos/cmUhXhJiNjE",
+        "price": 3167900,
+        "AdminId": 1
+    },
+    {
+        "name": "Jumana Bali Ungasan Resort",
+        "facility": [
+            "4 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bali",
+        "url": "https://unsplash.com/photos/wOxgcRwXCzo",
+        "price": 4880997,
+        "AdminId": 1
+    },
+    {
+        "name": "Sheraton Bali Kuta Resort",
+        "facility": [
+            "5 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bali",
+        "url": "https://unsplash.com/photos/HunEK-zNOy0",
+        "price": 1391000,
+        "AdminId": 1
+    },
+    {
+        "name": "Grand Zuri Kuta Bali",
+        "facility": [
+            "4 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bali",
+        "url": "https://unsplash.com/photos/cNsIhcGjkc0",
+        "price": 220998,
+        "AdminId": 1
+    },
+    {
+        "name": "The Ritz-Carlton Bali",
+        "facility": [
+            "5 Stars Hotel",
+            "AC",
+            "Restaurant",
+            "Free-Parking",
+            "Wifi"
+        ],
+        "location": "Bali",
+        "url": "https://unsplash.com/photos/5FkwGFXKzuk",
+        "price": 2768000,
+        "AdminId": 1
+    }
+]
