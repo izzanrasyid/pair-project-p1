@@ -9,10 +9,22 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             HotelId: {
-                type: Sequelize.INTEGER
+              type: Sequelize.INTEGER,
+              references: {
+                model: 'Hotels',
+                key: 'id'
+              },
+              onUpdate: 'cascade',
+              onDelete: 'cascade'
             },
             UserId: {
-                type: Sequelize.INTEGER
+              type: Sequelize.INTEGER,
+              references: {
+                model: 'Users',
+                key: 'id'
+              },
+              onUpdate: 'cascade',
+              onDelete: 'cascade'
             },
             checkInDate: {
                 type: Sequelize.DATE

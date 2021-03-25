@@ -67,7 +67,7 @@ class UserController {
                 })
                 .then(data => {
                     if (!data) {
-                        return Author.findOne({ where: { first_name: username } })
+                        return Admin.findOne({ where: { first_name: username } })
                     } else {
                         if (bcrypt.compareSync(password, data.password)) {
                             req.session.username = username
@@ -109,115 +109,116 @@ class UserController {
         })
     }
 
-    //     static history(req, res) {
-    //         const username = req.params.username
-    //         const author = req.session.author
-    //         let user;
+    static history(req, res) {
+        const username = req.params.username
+        const admin = req.session.admin
+        let user;
 
-    //         User.findOne({
-    //                 where: {
-    //                     username: username
-    //                 }
-    //             })
-    //             .then(data => {
-    //                 user = data
-    //                 return UserHotel.findAll({
-    //                     where: {
-    //                         UserId: data.id
-    //                     },
-    //                     include: Hotel,
-    //                     attributes: ['id', 'UserId', 'HotelId', 'borrow_date', 'return_date']
-    //                 })
-    //             })
-    //             .then(result => {
-    //                 res.render('user/history', { result, user, username, author })
-    //             })
-    //             .catch(err => {
-    //                 res.send(err)
-    //             })
-    //     }
+        User.findOne({
+                where: {
+                    username: username
+                }
+            })
+            .then(data => {
+                user = data
+                return UserHotel.findAll({
+                    where: {
+                        UserId: data.id
+                    },
+                    include: Hotel,
+                    attributes: ['id', 'UserId', 'HotelId', 'checkInDate', 'checkOutDate', 'status' ]
+                })
+            })
+            .then(result => {
+                res.render('users/history', { result, user, username, admin })
+            })
+            .catch(err => {
+                res.send(err)
+            })
+    }
 
-    //     static borrow(req, res) {
-    //         const username = req.params.username
-    //         const HotelId = req.params.HotelId
-    //         let user;
-    //         let userHotel
+    static booking(req, res) {
+        const username = req.params.username
+        const HotelId = req.params.HotelId
+        let user;
+        let userHotel
 
-    //         User.findOne({
-    //                 where: {
-    //                     username: username
-    //                 }
-    //             })
-    //             .then(data => {
-    //                 user = data
+        User.findOne({
+                where: {
+                    username: username
+                }
+            })
+            .then(data => {
+                user = data
 
-    //                 return UserHotel.create({
-    //                     UserId: data.id,
-    //                     HotelId: HotelId,
-    //                     borrow_date: new Date()
-    //                 })
-    //             })
-    //             .then(data2 => {
-    //                 userHotel = data2
+                return UserHotel.create({
+                    UserId: data.id,
+                    HotelId: HotelId,
+                    checkInDate: data.checkInDate,
+                    checkOutDate: data.checkOutDate,
+                    status: 'booked'
+                })
+            })
+            .then(data2 => {
+                userHotel = data2
 
-    //                 return Hotel.update({ status: 'borrowed' }, {
-    //                     where: {
-    //                         id: HotelId
-    //                     },
-    //                     returning: true
-    //                 })
-    //             })
-    //             .then(result => {
-    //                 const email = user.email
+                return Hotel.update({ status: 'booked' }, {
+                    where: {
+                        id: HotelId
+                    },
+                    returning: true
+                })
+            })
+            .then(result => {
+                const email = user.email
 
-    //                 var mailOptions = {
-    //                     from: 'toriany6@gmail.com',
-    //                     to: email,
-    //                     subject: 'You just borrowed a Hotel',
-    //                     text: `Hi ${email}, you just borrowed ${result[1][0].title} from our library on ${userHotel.borrow_date} please return it within a month, happy reading!`
-    //                 };
+                var mailOptions = {
+                    from: 'izzanrasyid9@gmail.com',
+                    to: email,
+                    subject: 'You just borrowed a Hotel',
+                    text: `Hi ${email}, you just booking ${result[1][0].title} from our website on ${userHotel.borrow_date} please enjoy your day, happy sleeping!`
+                };
 
-    //                 transporter.sendMail(mailOptions, function(error, info) {
-    //                     if (error) {
-    //                         console.log(error);
-    //                     } else {
-    //                         console.log('Email sent: ' + info.response);
-    //                     }
-    //                 });
-    //                 res.redirect(`/users/${username}`)
-    //             })
-    //             .catch(err => {
-    //                 res.send(err)
-    //             })
-    //     }
+                transporter.sendMail(mailOptions, function(error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                res.redirect(`/users/${username}`)
+            })
+            .catch(err => {
+                res.send(err)
+            })
+    }
 
-    //     static
-    //     return (req, res) {
-    //         const username = req.params.username
-    //         const id = +req.params.id
+    static return(req, res) {
+        const username = req.params.username
+        const id = +req.params.id
 
-    //         UserHotel.update({ return_date: new Date() }, {
-    //                 where: {
-    //                     id: id
-    //                 },
-    //                 returning: true
-    //             })
-    //             .then(result => {
-    //                 return Hotel.update({ status: null }, {
-    //                     where: {
-    //                         id: result[1][0].HotelId
-    //                     },
-    //                     returning: true
-    //                 })
-    //             })
-    //             .then(data => {
-    //                 res.redirect(`/users/${username}`)
-    //             })
-    //             .catch(err => {
-    //                 console.log(err)
-    //                 res.send(err)
-    //             })
-    //     }
+        UserBook.update({status: 'paid'}, {
+            where: {
+                id: id
+            },
+            returning: true
+        })
+        .then(result => {
+            return Hotel.update({status: null}, {
+                where: {
+                    id: result[1][0].HotelId
+                },
+                returning: true
+            })
+        })
+        .then(data => {
+            res.redirect(`/users/${username}`)
+        })
+        .catch(err => {
+            console.log(err)
+            res.send(err)
+        })
+    }
 }
 
 module.exports = UserController

@@ -9,9 +9,10 @@
             "Wifi"
         ],
         "location": "Jakarta",
-        "url": "https://unsplash.com/photos/M7GddPqJowg",
+        "url": "https://images.unsplash.com/photo-1616064959886-a500e5c38e1e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
         "price": 789000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Best Western Premier The Hive",
@@ -24,9 +25,10 @@
             "Wifi"
         ],
         "location": "Jakarta",
-        "url": "https://unsplash.com/photos/_dS27XGgRyQ",
+        "url": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8aG90ZWx8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 1080000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Mercure Jakarta Sabang",
@@ -39,9 +41,10 @@
             "Wifi"
         ],
         "location": "Jakarta",
-        "url": "https://unsplash.com/photos/CepDpEiALqM",
+        "url": "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 500898,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Ashley Wahid Hasyim Jakarta",
@@ -54,9 +57,10 @@
             "Wifi"
         ],
         "location": "Jakarta",
-        "url": "https://unsplash.com/photos/giL2fHNr3Lc",
+        "url": "hhttps://images.unsplash.com/photo-1455587734955-081b22074882?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 620000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "The BnB Hotel Kelapa Gading",
@@ -69,9 +73,10 @@
             "Wifi"
         ],
         "location": "Jakarta",
-        "url": "https://unsplash.com/photos/2wQY-DJhplM",
+        "url": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 274000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "The Papandayan",
@@ -84,9 +89,10 @@
             "Wifi"
         ],
         "location": "Bandung",
-        "url": "https://unsplash.com/photos/ORS4Y-et7xg",
+        "url": "https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTh8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 977000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "The Trans Luxury",
@@ -99,9 +105,10 @@
             "Wifi"
         ],
         "location": "Bandung",
-        "url": "https://unsplash.com/photos/IdpYE0Qt8Hw",
+        "url": "https://images.unsplash.com/photo-1560200353-ce0a76b1d438?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzN8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 334261,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "POP! Hotel Festival Citylink",
@@ -114,9 +121,10 @@
             "Wifi"
         ],
         "location": "Bandung",
-        "url": "https://unsplash.com/photos/X13hkujF2EY",
+        "url": "https://images.unsplash.com/photo-1570213489059-0aac6626cade?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzZ8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 247500,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Vio Cihampelas",
@@ -129,9 +137,10 @@
             "Wifi"
         ],
         "location": "Bandung",
-        "url": "https://unsplash.com/photos/H7TGM7Sx0o4",
+        "url": "https://images.unsplash.com/photo-1607816420124-038873dbd26b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDF8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 206000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Vio Cihampelas",
@@ -144,9 +153,10 @@
             "Wifi"
         ],
         "location": "Bandung",
-        "url": "https://unsplash.com/photos/H7TGM7Sx0o4",
+        "url": "https://images.unsplash.com/photo-1573663520878-8c38b10264fc?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nzl8fGhvdGVsfGVufDB8fDB8&auto=format&fit=crop&w=500&q=60",
         "price": 206000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Beehive Boutique Hotel",
@@ -158,9 +168,10 @@
             "Wifi"
         ],
         "location": "Bandung",
-        "url": "https://unsplash.com/photos/HtXK-ykvuxc",
+        "url": "https://images.unsplash.com/photo-1612454882322-2cc894734fd2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8ODJ8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 690000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Hotel Tentrem Yogyakarta",
@@ -172,9 +183,10 @@
             "Wifi"
         ],
         "location": "Yogyakarta",
-        "url": "https://unsplash.com/photos/RxEDblujcs0",
+        "url": "https://images.unsplash.com/photo-1598598795009-f80c5072e665?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OTN8fGhvdGVsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 1573000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "THE 1O1 Yogyakarta Tugu Hotel",
@@ -186,9 +198,10 @@
             "Wifi"
         ],
         "location": "Yogyakarta",
-        "url": "https://unsplash.com/photos/SIg-ZsJPf5Q",
+        "url": "https://images.unsplash.com/photo-1589906400076-74ea139684d5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTEyfHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 484290,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Hotel Neo Malioboro By ASTON",
@@ -200,9 +213,10 @@
             "Wifi"
         ],
         "location": "Yogyakarta",
-        "url": "https://unsplash.com/photos/o1lALNEP2BQ",
+        "url": "https://images.unsplash.com/photo-1589990194992-bae914a46927?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTEzfHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 562500,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "PORTA by The Ambarrukmo",
@@ -214,9 +228,10 @@
             "Wifi"
         ],
         "location": "Yogyakarta",
-        "url": "https://unsplash.com/photos/0rVjtzABZZU",
+        "url": "https://images.unsplash.com/photo-1599323237263-8990d27604b6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTE4fHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 552898,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Greenhost Boutique Hotel",
@@ -228,9 +243,10 @@
             "Wifi"
         ],
         "location": "Yogyakarta",
-        "url": "https://unsplash.com/photos/zFukeBF6EWU",
+        "url": "https://images.unsplash.com/photo-1518937720323-38f65eba62fd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTIyfHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 505200,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "The Apurva Kempinski Bali",
@@ -242,9 +258,10 @@
             "Wifi"
         ],
         "location": "Bali",
-        "url": "https://unsplash.com/photos/cmUhXhJiNjE",
+        "url": "https://images.unsplash.com/photo-1613429547334-553cddaa781f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTM0fHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 3167900,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Jumana Bali Ungasan Resort",
@@ -258,7 +275,8 @@
         "location": "Bali",
         "url": "https://unsplash.com/photos/wOxgcRwXCzo",
         "price": 4880997,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Sheraton Bali Kuta Resort",
@@ -270,9 +288,10 @@
             "Wifi"
         ],
         "location": "Bali",
-        "url": "https://unsplash.com/photos/HunEK-zNOy0",
+        "url": "https://images.unsplash.com/photo-1590006690031-74f47dab5ef9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTM2fHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 1391000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "Grand Zuri Kuta Bali",
@@ -284,9 +303,10 @@
             "Wifi"
         ],
         "location": "Bali",
-        "url": "https://unsplash.com/photos/cNsIhcGjkc0",
+        "url": "https://images.unsplash.com/photo-1591329855682-e9e896834424?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTY0fHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 220998,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     },
     {
         "name": "The Ritz-Carlton Bali",
@@ -298,8 +318,9 @@
             "Wifi"
         ],
         "location": "Bali",
-        "url": "https://unsplash.com/photos/5FkwGFXKzuk",
+        "url": "https://images.unsplash.com/photo-1569660072562-48a035e65c30?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTY1fHxob3RlbHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
         "price": 2768000,
-        "AdminId": 1
+        "AdminId": 1,
+        "status": "available"
     }
 ]
