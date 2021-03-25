@@ -49,14 +49,14 @@ class HotelController {
                 return Hotel.create(newHotel)
             })
             .then(data => {
-                var mailOptions = {
-                    from: 'izzanrasyid9@gmail.com',
-                    to: emails,
-                    subject: `New Hotel`,
-
-                    text: `Hello, there's a new hotel ${newHotel.name} in ${newHotel.location} come be the first to check in and enjoy with us!`
-
+                let mailOptions = {
+                    from: '"Jobs.io <confirmation@jobsio.com>', 
+                    to: "fauzan@mail.com, riod@gmail.com", 
+                    subject: "new hotel Confirmation", 
+                    text: "Your Booking hahajaj!", 
+                    html: "<b>Congratulations on sending in your job application!</b>", 
                 };
+
 
                 transporter.sendMail(mailOptions, function(error, info) {
                     if (error) {

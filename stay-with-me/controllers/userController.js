@@ -178,13 +178,6 @@ class UserController {
                     text: "Your Booking hahajaj!", 
                     html: "<b>Congratulations on sending in your job application!</b>", 
                 };
-                // return transporter.sendMail({
-                //     from: '"Jobs.io <confirmation@jobsio.com>', 
-                //     to: "fauzan@mail.com, riod@gmail.com", 
-                //     subject: "Confirmation of Job Application ✔", 
-                //     text: "Congratulations on sending in your job application!", 
-                //     html: "<b>Congratulations on sending in your job application!</b>", 
-                // });
 
                 transporter.sendMail(mailOptions, function(error, info) {
                     if (error) {
@@ -203,6 +196,7 @@ class UserController {
     static paid(req, res) {
         const username = req.params.username
         const id = +req.params.id
+        let user;
 
         OrderTransaction.update({checkOutDate: new Date()}, {
             where: {
@@ -219,6 +213,22 @@ class UserController {
             })
         })
         .then(data => {
+                let mailOptions = {
+                    from: '"Jobs.io <confirmation@jobsio.com>', 
+                    to: "fauzan@mail.com, riod@gmail.com", 
+                    subject: "Hotel paid Confirmation", 
+                    text: "Your Booking hahajaj!", 
+                    html: "<b>Congratulations on sending in your job application!</b>", 
+                };
+
+
+                transporter.sendMail(mailOptions, function(error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
             res.redirect(`/users/${username}`)
         })
         .catch(err => {
