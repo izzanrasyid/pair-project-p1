@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require("../models");
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.createTable('Hotels', {
@@ -17,6 +20,9 @@ module.exports = {
             location: {
                 type: Sequelize.STRING
             },
+            status: {
+              type: Sequelize.STRING
+            },
             url: {
                 type: Sequelize.STRING
             },
@@ -24,7 +30,13 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             AdminId: {
-                type: Sequelize.INTEGER
+              type: Sequelize.INTEGER,
+              references: {
+                model: 'Admins',
+                key: 'id'
+              },
+              onUpdate: 'cascade',
+              onDelete: 'cascade'
             },
             createdAt: {
                 allowNull: false,

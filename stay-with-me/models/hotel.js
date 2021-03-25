@@ -1,33 +1,86 @@
 'use strict';
-const {
-    Model
-} = require('sequelize');
+const {Model} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-    class Hotel extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
-        static associate(models) {
-            // define association here
-            Hotel.belongsTo(models.Admin),
-                Hotel.belongsToMany(models.User, {
-                    through: 'OrderTransaction',
-                    foreignKey: 'HotelId'
-                })
+  class Hotel extends Model {
+
+    static associate(models) {
+      Hotel.belongsTo(models.Admin)
+      Hotel.belongsToMany(models.User, {through: models.OrderTransaction})
+    }
+  };
+  Hotel.init({
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'a Hotel must have a name'
         }
-    };
-    Hotel.init({
-        name: DataTypes.STRING,
-        facility: DataTypes.STRING,
-        location: DataTypes.STRING,
-        url: DataTypes.STRING,
-        price: DataTypes.INTEGER,
-        AdminId: DataTypes.INTEGER
-    }, {
-        sequelize,
-        modelName: 'Hotel',
-    });
-    return Hotel;
+      }
+    },
+    facility: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'a Hotel must have a facility'
+        }
+      }
+    },
+    location: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'please insert the location'
+        }
+      }
+    },
+    status: DataTypes.STRING,
+    url: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'please provide an url'
+        },
+        isUrl: {
+          args: true,
+          msg: 'please insert a valid url'
+        }
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'please insert price'
+        }
+      }
+    },
+    AdminId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'please insert the Admin'
+        }
+      }
+    },
+  }, {
+    sequelize,
+    modelName: 'Hotel',
+  });
+
+  Hotel.addHook('beforeCreate', (instance, options) => {
+    instance.status = null
+    instance.genre = `{${instance.genre}}`
+  })
+  Hotel.addHook('beforeUpdate', (instance, options) => {
+    instance.genre = `{${instance.genre}}`
+  })
+
+  return Hotel;
 };

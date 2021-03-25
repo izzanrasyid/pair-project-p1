@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
             Admin.hasMany(models.Hotel)
         }
+
+        fullName() {
+          return `${this.first_name} ${this.last_name}`
+        }
     };
     Admin.init({
         first_name: DataTypes.STRING,

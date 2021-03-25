@@ -1,4 +1,4 @@
-const { Admin, Hotel, User, UserBook } = require('../models')
+const { Admin, Hotel, User } = require('../models')
 const transporter = require('../helper/nodemailer')
 
 class HotelController {
@@ -26,7 +26,7 @@ class HotelController {
         const admin = req.session.admin
         Admin.findAll()
             .then(data => {
-                res.render('./hotels/formAdd', { username, admin, data, alert })
+                res.render('./hotels/add', { username, admin, data, alert })
             })
             .catch(err => {
                 res.send(err)
@@ -77,7 +77,7 @@ class HotelController {
                     })
 
                     res.redirect(`/hotels/add?alert=${alert}`)
-                  
+
                 } else {
                     res.send(err)
                 }
@@ -167,4 +167,3 @@ class HotelController {
 
 
 module.exports = HotelController
-
