@@ -1,58 +1,59 @@
-const { Author, Book, User, UserBook } = require('../models')
+const { Admin, Hotel, User, UserBook } = require('../models')
 const transporter = require('../helper/nodemailer')
 
-class BookController {
-    static listBooks(req, res) {
-        Book.findAll({
-                include: Author,
+class HotelController {
+    static listHotels(req, res) {
+        Hotel.findAll({
+                include: Admin,
                 order: [
                     ['id', 'asc']
                 ]
             })
             .then(data => {
                 const username = req.session.username
-                const author = req.session.author
-                res.render('./books/list', { data, username, author })
+                const admin = req.session.admin
+                res.render('./hotels/list', { data, username, admin })
             })
             .catch(err => {
                 res.send(err)
             })
     }
 
-    static addBook(req, res) {
+    static addHotel(req, res) {
         const alert = req.query.alert
         const username = req.session.username
-        const author = req.session.author
-        Author.findAll()
+        const admin = req.session.admin
+        Admin.findAll()
             .then(data => {
-                res.render('./books/formAdd', { username, author, data, alert })
+                res.render('./hotelss/formAdd', { username, admin, data, alert })
             })
             .catch(err => {
                 res.send(err)
             })
     }
 
-    static addBookPost(req, res) {
-        const newBook = {
-            title: req.body.title,
-            genre: req.body.genre,
-            released_year: req.body.released_year,
+    static addHotelPost(req, res) {
+        const newHotel = {
+            name: req.body.name,
+            facility: req.body.facility,
+            location: req.body.location,
             url: req.body.url,
-            AuthorId: req.body.AuthorId
+            price: req.body.price,
+            AdminId: req.body.AdminId
         }
 
         const emails = []
         User.findAll()
             .then(result => {
                 result.forEach(el => emails.push(el.email))
-                return Book.create(newBook)
+                return Hotel.create(newHotel)
             })
             .then(data => {
                 var mailOptions = {
                     from: 'toriany6@gmail.com',
                     to: emails,
                     subject: `A New Book Just Arrived`,
-                    text: `Hello, there's a new book in our catalog titled ${newBook.title} come be the first to borrow it!!`
+                    text: `Hello, there's a new book in our catalog titled ${newHotel.name} come be the first to borrow it!!`
                 };
 
                 transporter.sendMail(mailOptions, function(error, info) {
@@ -62,14 +63,14 @@ class BookController {
                         console.log('Email sent: ' + info.response);
                     }
                 });
-                res.redirect('/books')
+                res.redirect('/hotels')
             })
             .catch(err => {
                 if (err.errors) {
                     const alert = err.errors.map(element => {
                         return element.message
                     })
-                    res.redirect(`/books/add?alert=${alert}`)
+                    res.redirect(`/hotels/add?alert=${alert}`)
                 } else {
                     res.send(err)
                 }
@@ -79,19 +80,19 @@ class BookController {
     static editForm(req, res) {
         const alert = req.query.alert
         const username = req.session.username
-        const author = req.session.author
-        let book
+        const admin = req.session.admin
+        let hotel
         const id = +req.params.id
-        Book.findByPk(id, {
-                include: Author
+        Hotel.findByPk(id, {
+                include: Admin
             })
             .then(result => {
-                book = result
-                return Author.findAll()
+                hotel = result
+                return Admin.findAll()
             })
 
         .then(data => {
-                res.render('../views/books/edit.ejs', { data, username, author, book, alert })
+                res.render('../views/hotels/edit.ejs', { data, username, admin, hotel, alert })
             })
             .catch(err => {
                 res.send(err)
@@ -101,27 +102,28 @@ class BookController {
     static edit(req, res) {
         const id = +req.params.id
         const value = {
-            title: req.body.title,
-            genre: req.body.genre,
+            name: req.body.name,
+            facility: req.body.facility,
+            location: req.body.location,
             url: req.body.url,
-            released_year: req.body.released_year,
-            AuthorId: req.body.AuthorId,
+            price: req.body.price,
+            AdminId: req.body.AdminId
         }
-        Book.update(value, {
+        Hotel.update(value, {
                 where: {
                     id: id
                 },
                 individualHooks: true
             })
             .then(data => {
-                res.redirect('/books')
+                res.redirect('/hotels')
             })
             .catch(err => {
                 if (err.errors) {
                     const alert = err.errors.map(element => {
                         return element.message
                     })
-                    res.redirect(`/books/${id}/edit?alert=${alert}`)
+                    res.redirect(`/hotels/${id}/edit?alert=${alert}`)
                 } else {
                     res.send(err)
                 }
@@ -129,13 +131,13 @@ class BookController {
     }
 
     static delete(req, res) {
-        Book.destroy({
+        Hotel.destroy({
                 where: {
                     id: +req.params.id
                 }
             })
             .then(data => {
-                res.redirect('/books')
+                res.redirect('/hotels')
             })
             .catch(err => {
                 res.send(err)
@@ -143,4 +145,4 @@ class BookController {
     }
 }
 
-module.exports = BookController
+module.exports = HotelController
