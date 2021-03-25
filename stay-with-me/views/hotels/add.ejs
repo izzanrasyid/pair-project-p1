@@ -1,4 +1,5 @@
 <%- include('../partials/header.ejs', {name: 'Add A Hotel'}) %>
+<h1 class="text-center">Form Add Hotel</h1>
     <br>
     <a href="/hotels" class="btn btn-primary">Back to List</a>
     <br>
@@ -30,15 +31,7 @@
                             <label for="price">Price</label>
                             <input type="text" name="price" id="price" class="form-control" placeholder="1000000">
                         </div>
-                        <div class="form-group">
-                            <label for="AdminId">Admin</label>
-                            <select name="AdminId" id="AdminId" class="form-control"> 
-            <option value="" selected>Select Here</option>
-            <%data.forEach(element=>{%>
-                <option value="<%=element.id%>"><%=element.fullName()%></option>
-            <%})%>
-        </select>
-                        </div>
+                        
                         <button class="btn btn-success" type="submit">Add Hotel</button>
                         <button class="btn btn-danger" type="reset">Reset</button>
                     </form>

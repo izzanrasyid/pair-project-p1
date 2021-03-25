@@ -40,9 +40,8 @@ class HotelController {
             location: req.body.location,
             url: req.body.url,
             price: req.body.price,
-            AdminId: req.body.AdminId
+            AdminId: 1
         }
-
         const emails = []
         User.findAll()
             .then(result => {
@@ -51,11 +50,11 @@ class HotelController {
             })
             .then(data => {
                 var mailOptions = {
-                    from: 'toriany6@gmail.com',
+                    from: 'izzanrasyid9@gmail.com',
                     to: emails,
-                    subject: `A New Book Just Arrived`,
+                    subject: `New Hotel`,
 
-                    text: `Hello, there's a new book in our catalog titled ${newHotel.name} come be the first to borrow it!!`
+                    text: `Hello, there's a new hotel ${newHotel.name} in ${newHotel.location} come be the first to check in and enjoy with us!`
 
                 };
 
@@ -66,8 +65,6 @@ class HotelController {
                         console.log('Email sent: ' + info.response);
                     }
                 });
-
-
                 res.redirect('/hotels')
             })
             .catch(err => {
@@ -117,7 +114,7 @@ class HotelController {
             location: req.body.location,
             url: req.body.url,
             price: req.body.price,
-            AdminId: req.body.AdminId
+            AdminId: 1
         }
         Hotel.update(value, {
 

@@ -75,11 +75,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Hotel.addHook('beforeCreate', (instance, options) => {
-    instance.status = null
-    instance.genre = `{${instance.genre}}`
+    instance.status = 'available'
+    instance.facility = `{${instance.facility}}`
   })
   Hotel.addHook('beforeUpdate', (instance, options) => {
-    instance.genre = `{${instance.genre}}`
+    instance.facility = `{${instance.facility}}`
   })
 
   return Hotel;
