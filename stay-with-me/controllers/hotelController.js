@@ -11,6 +11,7 @@ class HotelController {
             })
             .then(data => {
                 const username = req.session.username
+
                 const admin = req.session.admin
                 res.render('./hotels/list', { data, username, admin })
             })
@@ -25,7 +26,7 @@ class HotelController {
         const admin = req.session.admin
         Admin.findAll()
             .then(data => {
-                res.render('./hotelss/formAdd', { username, admin, data, alert })
+                res.render('./hotels/formAdd', { username, admin, data, alert })
             })
             .catch(err => {
                 res.send(err)
@@ -53,7 +54,9 @@ class HotelController {
                     from: 'toriany6@gmail.com',
                     to: emails,
                     subject: `A New Book Just Arrived`,
+
                     text: `Hello, there's a new book in our catalog titled ${newHotel.name} come be the first to borrow it!!`
+
                 };
 
                 transporter.sendMail(mailOptions, function(error, info) {
@@ -63,6 +66,8 @@ class HotelController {
                         console.log('Email sent: ' + info.response);
                     }
                 });
+
+
                 res.redirect('/hotels')
             })
             .catch(err => {
@@ -70,7 +75,9 @@ class HotelController {
                     const alert = err.errors.map(element => {
                         return element.message
                     })
+
                     res.redirect(`/hotels/add?alert=${alert}`)
+                  
                 } else {
                     res.send(err)
                 }
@@ -80,6 +87,7 @@ class HotelController {
     static editForm(req, res) {
         const alert = req.query.alert
         const username = req.session.username
+
         const admin = req.session.admin
         let hotel
         const id = +req.params.id
@@ -93,6 +101,7 @@ class HotelController {
 
         .then(data => {
                 res.render('../views/hotels/edit.ejs', { data, username, admin, hotel, alert })
+
             })
             .catch(err => {
                 res.send(err)
@@ -102,6 +111,7 @@ class HotelController {
     static edit(req, res) {
         const id = +req.params.id
         const value = {
+
             name: req.body.name,
             facility: req.body.facility,
             location: req.body.location,
@@ -110,12 +120,14 @@ class HotelController {
             AdminId: req.body.AdminId
         }
         Hotel.update(value, {
+
                 where: {
                     id: id
                 },
                 individualHooks: true
             })
             .then(data => {
+
                 res.redirect('/hotels')
             })
             .catch(err => {
@@ -123,7 +135,9 @@ class HotelController {
                     const alert = err.errors.map(element => {
                         return element.message
                     })
+
                     res.redirect(`/hotels/${id}/edit?alert=${alert}`)
+
                 } else {
                     res.send(err)
                 }
@@ -131,13 +145,18 @@ class HotelController {
     }
 
     static delete(req, res) {
+
         Hotel.destroy({
+
                 where: {
                     id: +req.params.id
                 }
             })
             .then(data => {
+
+
                 res.redirect('/hotels')
+
             })
             .catch(err => {
                 res.send(err)
@@ -145,4 +164,7 @@ class HotelController {
     }
 }
 
+
+
 module.exports = HotelController
+
