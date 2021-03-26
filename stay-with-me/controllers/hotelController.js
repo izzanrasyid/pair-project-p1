@@ -1,6 +1,5 @@
 const { Admin, Hotel, User } = require('../models')
 const transporter = require('../helper/nodemailer')
-const convertPrice = require('../helper/convertPrice');
 
 class HotelController {
     static listHotels(req, res) {
@@ -14,7 +13,7 @@ class HotelController {
                 const username = req.session.username
 
                 const admin = req.session.admin
-                res.render('./hotels/list', { data, username, admin, convertPrice })
+                res.render('./hotels/list', { data, username, admin })
             })
             .catch(err => {
                 res.send(err)

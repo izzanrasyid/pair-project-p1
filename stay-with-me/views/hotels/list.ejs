@@ -34,11 +34,11 @@
                             <%= el.location %>
                         </td>
                         <td>
-                            <%= convertPrice(el.price) + ' / Day' %>
+                            <%= el.convert()+ ' / Day' %>
                         </td>
                         <td>
                             <a class="btn btn-primary" href="/hotels/<%= el.id %>/edit" <%=admin && el.status==='available' ? '' : 'hidden' %>>Edit</a>
-                            <a class="btn btn-danger" href="/hotels/<%= el.id %>/delete" onclick="return confirm('are you sure you want to delete this book ?')" <%=admin && el.status==='available' ? '' : 'hidden' %>>Delete</a>
+                            <a class="btn btn-danger" href="/hotels/<%= el.id %>/delete" onclick="return confirm('are you sure you want to delete this hotel ?')" <%=admin && el.status==='available' ? '' : 'hidden' %>>Delete</a>
                             <% if (el.status === 'booked') { %>
                                 <a class="btn btn-info">This Room is Unavailable</a>
                                 <% } else { %>
