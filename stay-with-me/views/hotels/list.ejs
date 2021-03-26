@@ -1,4 +1,5 @@
 <%- include('../partials/header.ejs', {title: 'List of Hotels'}) %>
+    <h1 class="text-center">Hotel Lists</h1>
     <a href="/hotels/add" class="btn btn-primary" <%=admin ? '' : 'hidden' %> >Add a hotel</a>
     <br>
     <table class="table table-striped">
@@ -15,29 +16,37 @@
         <tbody>
             <% data.forEach(el => { %>
                 <tr>
-                    <td><%= el.name %></td>
+                    <td>
+                        <%= el.name %>
+                    </td>
                     <td><img src="<%= el.url %>" width="250px" height="300px"></td>
-                    <% const facilities = el.facility.substring(1, el.facility.length-1).split(',') %> 
-                    <td>
-                        <ul class="list-group">
-                        <% facilities.forEach (element => { %>
-                            <li class="list-group-item"><%= element %> </li>
-                        <% }) %> 
-                        </ul>
-                    </td>
-                    <td><%= el.location %></td>
-                    <td><%= el.price %></td>
-                    <td>
-                        <a class="btn btn-primary" href="/books/<%= el.id %>/edit" <%= admin && el.status === 'available' ? '' : 'hidden' %>>Edit</a>
-                        <a class="btn btn-danger" href="/books/<%= el.id %>/delete" onclick="return confirm('are you sure you want to delete this book ?')" <%= admin && el.status === 'available' ? '' : 'hidden' %>>Delete</a>
-                        <% if (el.status === 'booked') { %>
-                            <a class="btn btn-info">This Room Is Unavailable</a>
-                        <% } else { %>
-                            <a class="btn btn-info" href="/users/<%= username %>/<%= el.id %>" <%= admin ? 'hidden' : '' %> >Booking</a>
-                        <% } %>  
-                    </td>
+                    <% const facilities = el.facility.substring(1, el.facility.length-1).split(',') %>
+                        <td>
+                            <ul class="list-group">
+                                <% facilities.forEach (element => { %>
+                                    <li class="list-group-item">
+                                        <%= element %>
+                                    </li>
+                                    <% }) %>
+                            </ul>
+                        </td>
+                        <td>
+                            <%= el.location %>
+                        </td>
+                        <td>
+                            <%= convertPrice(el.price) + ' / Day' %>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="/hotels/<%= el.id %>/edit" <%=admin && el.status==='available' ? '' : 'hidden' %>>Edit</a>
+                            <a class="btn btn-danger" href="/hotels/<%= el.id %>/delete" onclick="return confirm('are you sure you want to delete this book ?')" <%=admin && el.status==='available' ? '' : 'hidden' %>>Delete</a>
+                            <% if (el.status === 'booked') { %>
+                                <a class="btn btn-info">This Room is Unavailable</a>
+                                <% } else { %>
+                                    <a class="btn btn-info" href="/users/<%= username %>/<%= el.id %>" <%=admin ? 'hidden' : '' %> >Booking</a>
+                                    <% } %>
+                        </td>
                 </tr>
-            <% }) %> 
+                <% }) %>
         </tbody>
     </table>
     </body>

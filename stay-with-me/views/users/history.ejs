@@ -1,32 +1,33 @@
 <%- include('../partials/header.ejs', {title: 'Your History'}) %>
+<h1 class="text-center">Transaction History</h1>
 <br>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Borrowed Date</th>
-            <th>Return Date</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Booking Date</th>
+            <th>Check Out Date</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <% result.forEach(el =>{ %>
             <tr>
-                <td><%= el.Book.title %> </td>
-                <% let genre = el.Book.genre.substring(1, el.Book.genre.length-1).split(',') %>
+                <td><%= el.Hotel.name %> </td>
+                <% let facility = el.Hotel.facility.substring(1, el.Hotel.facility.length-1).split(',') %>
                 <td>
                     <ul class="list-group">
-                        <% genre.forEach(element => { %>
+                        <% facility.forEach(element => { %>
                             <li class="list-group-item"><%= element %> </li>
                         <% }) %> 
                     </ul>
                 </td> 
-                <td><%= el.borrow_date.toString() %></td>
-                <td><%= el.return_date ? el.return_date.toString() : '-' %> </td>
+                <td><%= el.checkInDate.toString() %></td>
+                <td><%= el.checkOutDate ? el.checkOutDate.toString() : '-' %> </td>
                 <td>
-                    <a href="/users/<%= username %>/<%= el.Book.id %>" class="btn btn-success" <%= el.return_date ? '' : 'hidden' %>  >Borrow Again</a>
-                    <a href="/users/<%=username%>/<%= el.id %>/return" class="btn btn-primary"<%= el.return_date ? 'hidden' : '' %> >Return</a>
+                    <a href="/users/<%= username %>/<%= el.Hotel.id %>" class="btn btn-success" <%= el.checkOutDate? '' : 'hidden' %>  >Booking Again</a>
+                    <a href="/users/<%=username%>/<%= el.id %>/return" class="btn btn-primary"<%= el.checkOutDate ? 'hidden' : '' %> >Checkout</a>
                 </td>
             </tr>
         <% }) %> 

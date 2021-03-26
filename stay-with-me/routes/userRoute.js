@@ -10,11 +10,11 @@ route.post('/login', UserController.formLoginPost)
 
 route.get('/logout', UserController.logout)
 
-// route.get('/:username', checkUser ,UserController)
+route.get('/:username', checkUser ,UserController.history)
 
-// route.get('/:username/:BookId', checkUser, UserController)
+route.get('/:username/:HotelId', checkUser, UserController.booking)
 
-// route.get('/:username/:id/return', checkUser ,UserController)
+route.get('/:username/:id/return', checkUser ,UserController.paid)
 
 
 

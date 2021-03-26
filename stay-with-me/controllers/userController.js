@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const { Admin, Hotel, User, OrderTransaction } = require('../models')
-// const transporter = require('../helpers/nodemailer')
+const transporter = require('../helper/nodemailer')
 
 class UserController {
     static formRegister(req, res) {
@@ -121,12 +121,15 @@ class UserController {
             })
             .then(data => {
                 user = data
-                return UserHotel.findAll({
+                return OrderTransaction.findAll({
                     where: {
                         UserId: data.id
                     },
                     include: Hotel,
-                    attributes: ['id', 'UserId', 'HotelId', 'checkInDate', 'checkOutDate', 'status' ]
+                    attributes: ['id', 'UserId', 'HotelId', 'checkInDate', 'checkOutDate', 'status'],
+                    order: [
+                        ['id', 'DESC']
+                    ]
                 })
             })
             .then(result => {
@@ -141,7 +144,7 @@ class UserController {
         const username = req.params.username
         const HotelId = req.params.HotelId
         let user;
-        let userHotel
+        let orderBooking
 
         User.findOne({
                 where: {
@@ -151,16 +154,15 @@ class UserController {
             .then(data => {
                 user = data
 
-                return UserHotel.create({
+                return OrderTransaction.create({
                     UserId: data.id,
                     HotelId: HotelId,
-                    checkInDate: data.checkInDate,
-                    checkOutDate: data.checkOutDate,
+                    checkInDate: new Date(),
                     status: 'booked'
                 })
             })
             .then(data2 => {
-                userHotel = data2
+                orderBooking = data2
 
                 return Hotel.update({ status: 'booked' }, {
                     where: {
@@ -170,13 +172,13 @@ class UserController {
                 })
             })
             .then(result => {
-                const email = user.email
 
-                var mailOptions = {
-                    from: 'izzanrasyid9@gmail.com',
-                    to: email,
-                    subject: 'You just borrowed a Hotel',
-                    text: `Hi ${email}, you just booking ${result[1][0].title} from our website on ${userHotel.borrow_date} please enjoy your day, happy sleeping!`
+                let mailOptions = {
+                    from: '"Stay With Me <booking@staywithme.com>',
+                    to: "fauzan@mail.com, riod@gmail.com",
+                    subject: "Hotel Booking Confirmation",
+                    text: "Your Booking!",
+                    html: "<b>Your hotel reservation has been successfully confirmed!</b>",
                 };
 
                 transporter.sendMail(mailOptions, function(error, info) {
@@ -193,31 +195,48 @@ class UserController {
             })
     }
 
-    static return(req, res) {
+    static paid(req, res) {
         const username = req.params.username
         const id = +req.params.id
+        let user;
 
-        UserBook.update({status: 'paid'}, {
-            where: {
-                id: id
-            },
-            returning: true
-        })
-        .then(result => {
-            return Hotel.update({status: null}, {
+        OrderTransaction.update({ checkOutDate: new Date() }, {
                 where: {
-                    id: result[1][0].HotelId
+                    id: id
                 },
                 returning: true
             })
-        })
-        .then(data => {
-            res.redirect(`/users/${username}`)
-        })
-        .catch(err => {
-            console.log(err)
-            res.send(err)
-        })
+            .then(result => {
+                return Hotel.update({ status: 'available' }, {
+                    where: {
+                        id: result[1][0].HotelId
+                    },
+                    returning: true
+                })
+            })
+            .then(data => {
+                let mailOptions = {
+                    from: '"Stay With Me <confirmation@staywithme.com>',
+                    to: "fauzan@mail.com, riod@gmail.com",
+                    subject: "Hotel Paid Confirmation",
+                    text: "Your Paid!",
+                    html: "<b>Your hotel payment has been successfully confirmed, enjoy sleeping!</b>",
+                };
+
+
+                transporter.sendMail(mailOptions, function(error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+                res.redirect(`/users/${username}`)
+            })
+            .catch(err => {
+                console.log(err)
+                res.send(err)
+            })
     }
 }
 

@@ -1,19 +1,20 @@
 const { Admin, Hotel, User } = require('../models')
 const transporter = require('../helper/nodemailer')
+const convertPrice = require('../helper/convertPrice');
 
 class HotelController {
     static listHotels(req, res) {
         Hotel.findAll({
                 include: Admin,
                 order: [
-                    ['id', 'asc']
+                    ['id', 'desc']
                 ]
             })
             .then(data => {
                 const username = req.session.username
 
                 const admin = req.session.admin
-                res.render('./hotels/list', { data, username, admin })
+                res.render('./hotels/list', { data, username, admin, convertPrice })
             })
             .catch(err => {
                 res.send(err)
@@ -40,9 +41,8 @@ class HotelController {
             location: req.body.location,
             url: req.body.url,
             price: req.body.price,
-            AdminId: req.body.AdminId
+            AdminId: 1
         }
-
         const emails = []
         User.findAll()
             .then(result => {
@@ -50,14 +50,14 @@ class HotelController {
                 return Hotel.create(newHotel)
             })
             .then(data => {
-                var mailOptions = {
-                    from: 'toriany6@gmail.com',
-                    to: emails,
-                    subject: `A New Book Just Arrived`,
-
-                    text: `Hello, there's a new book in our catalog titled ${newHotel.name} come be the first to borrow it!!`
-
+                let mailOptions = {
+                    from: '"Stay With Me <info@staywithme.com>',
+                    to: "fauzan@mail.com, riod@gmail.com",
+                    subject: "New Hotel Just Coming",
+                    text: "For your information!",
+                    html: "<b>Hello, there's a new hotels in our list, come be the first to feel it!</b>",
                 };
+
 
                 transporter.sendMail(mailOptions, function(error, info) {
                     if (error) {
@@ -66,8 +66,6 @@ class HotelController {
                         console.log('Email sent: ' + info.response);
                     }
                 });
-
-
                 res.redirect('/hotels')
             })
             .catch(err => {
@@ -117,7 +115,7 @@ class HotelController {
             location: req.body.location,
             url: req.body.url,
             price: req.body.price,
-            AdminId: req.body.AdminId
+            AdminId: 1
         }
         Hotel.update(value, {
 
