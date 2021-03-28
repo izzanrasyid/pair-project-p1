@@ -2,7 +2,7 @@
     "development": {
         "username": "postgres",
         "password": "postgres",
-        "database": "database_pp_p1",
+        "database": "stay-with-me",
         "host": "localhost",
         "dialect": "postgres"
     },
